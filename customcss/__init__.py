@@ -41,7 +41,7 @@ class CustomCSS(view.View):
     plugin_name = "CustomCSS"
     plugin_author = "David Casier, Thomas Andrejak"
     plugin_license = "GPL"
-    plugin_version = "5.0.0"
+    plugin_version = "5.1.0"
     plugin_copyright = "CSSI"
     plugin_description = N_("A plugin that allows you to customize your CSS")
     plugin_htdocs = (("customcss", pkg_resources.resource_filename(__name__, 'htdocs')),)
@@ -58,7 +58,7 @@ class CustomCSS(view.View):
         return template.PrewikkaTemplate(__name__, "templates/customcss.mak").render(
             less_variables=_LESS_VARIABLES,
             current_theme=env.request.user.get_property("theme", default="cs"),
-            themes=theme.getThemes()
+            themes=theme.get_themes()
         )
 
     @view.route("/customcss/save", methods=['POST'])
